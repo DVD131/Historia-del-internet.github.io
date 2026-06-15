@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia del Internet - Su Evolución e Impacto Social</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00ff88;
+            --secondary: #00d4ff;
+            --dark: #0a0e27;
+            --light: #1a1f3a;
+            --accent: #ff1744;
+            --text: #e0e0e0;
+            --border: #2a2f4a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            min-height: 100vh;
+        }
+
+        /* HEADER Y NAVEGACIÓN */
+        header {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            border-bottom: 2px solid var(--primary);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* SECCIONES */
+        section {
+            display: none;
+            background: linear-gradient(135deg, #1a1f3a 0%, #252d4a 100%);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 255, 136, 0.05);
+            animation: fadeIn 0.5s ease;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 4px solid var(--secondary);
+            padding-bottom: 1rem;
+        }
+
+        h2 {
+            color: var(--secondary);
+            font-size: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #d0d8e8;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: #d0d8e8;
+        }
+
+        /* TABLA DE CONTENIDOS */
+        .toc {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 212, 255, 0.05) 100%);
+            border-left: 4px solid var(--primary);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .toc h2 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 1rem;
+        }
+
+        .toc a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .toc a:hover {
+            color: var(--primary);
+            margin-left: 0.5rem;
+        }
+
+        /* TARJETAS */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #1a1f3a 0%, #2a2f4a 100%);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 255, 136, 0.15);
+            border-color: var(--secondary);
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin-top: 0;
+        }
+
+        .card p {
+            color: #d0d8e8;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            padding-left: 2rem;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 12px;
+            width: 2px;
+            height: calc(100% + 8px);
+            background: var(--primary);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .timeline-item-content {
+            background: #1a1f3a;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--secondary);
+        }
+
+        .timeline-item-content strong {
+            color: var(--secondary);
+        }
+
+        /* BOTONES */
+        .button {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--dark);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin-top: 1rem;
+        }
+
+        .button:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .button.secondary {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+
+        .button.secondary:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            border-top: 2px solid var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            color: #a0a8b8;
+            margin: 0;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 0.5rem;
+            }
+
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* DESTACADOS */
+        .highlight {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.08) 0%, rgba(0, 212, 255, 0.08) 100%);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+
+        .highlight strong {
+            color: var(--primary);
+        }
+
+        /* BADGE */
+        .badge {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge.secondary {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+
+        /* STATS */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--dark);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">🌐</span>
+                <span>Historia de Internet</span>
+            </div>
+            <nav>
+                <ul id="navbar">
+                    <li><a onclick="showSection('inicio')">Inicio</a></li>
+                    <li><a onclick="showSection('historia')">Historia</a></li>
+                    <li><a onclick="showSection('evolucion')">Evolución</a></li>
+                    <li><a onclick="showSection('impacto')">Impacto Social</a></li>
+                    <li><a onclick="showSection('beneficios')">Beneficios</a></li>
+                    <li><a onclick="showSection('transformacion')">Transformación</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="container">
+        <!-- SECCIÓN: INICIO -->
+        <section id="inicio" class="active">
+            <h1>🌐 Historia del Internet, su Evolución, Impacto Social y Transformación de la Información</h1>
+            
+            <div class="highlight">
+                <strong>¿Qué es Internet?</strong>
+                <p>Internet es una red mundial de comunicación que conecta millones de dispositivos alrededor del planeta. Actualmente es considerada una de las tecnologías más importantes de la historia de la humanidad debido a su impacto en la economía, la educación, la ciencia y la vida cotidiana.</p>
+            </div>
+
+            <h2>Introducción</h2>
+            <p>Gracias a Internet, las personas pueden compartir información, comunicarse en tiempo real, realizar compras, estudiar, trabajar y acceder a una cantidad prácticamente ilimitada de conocimientos.</p>
+            
+            <p>De acuerdo con la organización Internet Society, Internet es una <strong>"red de redes"</strong> formada por miles de sistemas interconectados que funcionan mediante estándares abiertos que permiten la comunicación global.</p>
+
+            <div class="toc">
+                <h2>📑 Contenidos</h2>
+                <ul>
+                    <li><a onclick="showSection('historia')">1. Historia del Internet</a></li>
+                    <li><a onclick="showSection('evolucion')">2. Evolución del Internet</a></li>
+                    <li><a onclick="showSection('impacto')">3. Impacto Social del Internet</a></li>
+                    <li><a onclick="showSection('beneficios')">4. Beneficios Sociales</a></li>
+                    <li><a onclick="showSection('transformacion')">5. Transformación de la Información</a></li>
+                </ul>
+            </div>
+
+            <button class="button" onclick="showSection('historia')">Comenzar a Leer →</button>
+        </section>
+
+        <!-- SECCIÓN: HISTORIA -->
+        <section id="historia">
+            <h1>📚 1. Historia del Internet</h1>
+
+            <h2>Los Primeros Antecedentes</h2>
+            <p>Durante las décadas de 1950 y 1960, las computadoras eran máquinas aisladas que no podían intercambiar información entre sí. En plena Guerra Fría, el gobierno de Estados Unidos comenzó a investigar formas de crear sistemas de comunicación más resistentes y eficientes.</p>
+
+            <p>La Agencia de Proyectos de Investigación Avanzada (ARPA) impulsó el desarrollo de una red experimental llamada <strong>ARPANET</strong>, considerada el antecedente directo de Internet. Esta red permitió conectar computadoras ubicadas en diferentes universidades y centros de investigación.</p>
+
+            <h2>El Primer Mensaje de la Historia</h2>
+            <div class="highlight">
+                <strong>29 de octubre de 1969</strong>
+                <p>Se realizó la primera comunicación entre dos computadoras conectadas mediante ARPANET. El mensaje que se intentó enviar fue la palabra "LOGIN", aunque el sistema se bloqueó después de transmitir las letras "LO". Este acontecimiento es considerado por muchos historiadores como el <strong>nacimiento de Internet</strong>.</p>
+            </div>
+
+            <h2>El Desarrollo de TCP/IP</h2>
+            <p>En la década de 1970, los investigadores <strong>Vinton Cerf</strong> y <strong>Robert Kahn</strong> desarrollaron los protocolos TCP/IP que permitieron:</p>
+            <ul>
+                <li>Dividir la información en paquetes</li>
+                <li>Enviar datos por diferentes rutas</li>
+                <li>Reconstruir la información al llegar al destino</li>
+                <li>Conectar redes distintas entre sí</li>
+            </ul>
+
+            <div class="highlight">
+                <strong>1 de enero de 1983</strong>
+                <p>ARPANET adoptó oficialmente TCP/IP, convirtiéndose en la <strong>base técnica del Internet moderno</strong>.</p>
+            </div>
+
+            <h2>El Nacimiento de la World Wide Web</h2>
+            <p>Aunque Internet ya existía, todavía era complicado de utilizar.</p>
+            <p>En 1989, el científico británico <strong>Tim Berners-Lee</strong> desarrolló la <strong>World Wide Web (WWW)</strong> en el CERN, creando tres elementos fundamentales:</p>
+            <ul>
+                <li><span class="badge secondary">HTML</span> - Lenguaje de marcado</li>
+                <li><span class="badge secondary">HTTP</span> - Protocolo de transferencia</li>
+                <li><span class="badge secondary">URL</span> - Localizador de recursos</li>
+            </ul>
+
+            <p>Gracias a estas tecnologías se pudieron crear páginas web accesibles mediante navegadores, facilitando enormemente el acceso a la información. <strong>La primera página web apareció en 1990.</strong></p>
+
+            <h2>La Expansión Mundial</h2>
+            <p>Durante la década de 1990 Internet comenzó a llegar a hogares y empresas. Aparecieron los primeros navegadores:</p>
+            <ul>
+                <li>Mosaic</li>
+                <li>Netscape Navigator</li>
+            </ul>
+
+            <p>También surgieron:</p>
+            <ul>
+                <li>Correo electrónico masivo</li>
+                <li>Motores de búsqueda</li>
+                <li>Foros</li>
+                <li>Comercio electrónico</li>
+                <li>Sitios web empresariales</li>
+            </ul>
+
+            <p>La cantidad de usuarios creció rápidamente en todo el mundo.</p>
+
+            <button class="button" onclick="showSection('evolucion')">Siguiente: Evolución →</button>
+        </section>
+
+        <!-- SECCIÓN: EVOLUCIÓN -->
+        <section id="evolucion">
+            <h1>📈 2. Evolución del Internet</h1>
+
+            <h2>Web 1.0: Internet de Lectura</h2>
+            <p><strong>Entre 1990 y 2000</strong> predominaban las páginas estáticas. Los sitios funcionaban como bibliotecas digitales donde solo se podía leer información.</p>
+            
+            <div class="card">
+                <h3>Características de Web 1.0</h3>
+                <ul>
+                    <li>Poca interacción</li>
+                    <li>Información unidireccional</li>
+                    <li>Usuarios consumidores de contenido</li>
+                </ul>
+            </div>
+
+            <h2>Web 2.0: Internet Social</h2>
+            <p><strong>A partir del año 2000</strong> surgió una nueva etapa caracterizada por la participación activa de los usuarios. Se popularizaron:</p>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>📱 Redes Sociales</h3>
+                    <p>Espacios donde los usuarios crean y comparten contenido libremente</p>
+                </div>
+                <div class="card">
+                    <h3>📹 Videos en Línea</h3>
+                    <p>Plataformas de streaming de video permitieron acceso masivo al contenido visual</p>
+                </div>
+                <div class="card">
+                    <h3>✍️ Blogs</h3>
+                    <p>Espacios personales para publicar opiniones y experiencias</p>
+                </div>
+                <div class="card">
+                    <h3>🤝 Plataformas Colaborativas</h3>
+                    <p>Herramientas para trabajar en equipo en línea</p>
+                </div>
+            </div>
+
+            <h3>Ejemplos de Plataformas Web 2.0:</h3>
+            <p>
+                <span class="badge">Facebook</span>
+                <span class="badge">YouTube</span>
+                <span class="badge">Instagram</span>
+                <span class="badge">WhatsApp</span>
+            </p>
+
+            <p>Internet dejó de ser un espacio donde solo se consumía información y pasó a ser un espacio donde <strong>cualquier persona podía crear contenido</strong>.</p>
+
+            <h2>Web 3.0 e Inteligencia Artificial</h2>
+            <p>Actualmente se habla de una <strong>Web 3.0</strong> caracterizada por:</p>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>🤖 Inteligencia Artificial</h3>
+                    <p>Sistemas inteligentes que aprenden y mejoran automáticamente</p>
+                </div>
+                <div class="card">
+                    <h3>🔗 Blockchain</h3>
+                    <p>Tecnología descentralizada y segura</p>
+                </div>
+                <div class="card">
+                    <h3>⚙️ Automatización</h3>
+                    <p>Procesos automáticos que ahorran tiempo y recursos</p>
+                </div>
+                <div class="card">
+                    <h3>👤 Personalización Avanzada</h3>
+                    <p>Contenidos adaptados específicamente a cada usuario</p>
+                </div>
+            </div>
+
+            <p>Los sistemas pueden analizar grandes cantidades de información para ofrecer contenidos adaptados a cada usuario.</p>
+
+            <button class="button" onclick="showSection('impacto')">Siguiente: Impacto Social →</button>
+        </section>
+
+        <!-- SECCIÓN: IMPACTO SOCIAL -->
+        <section id="impacto">
+            <h1>⚠️ 3. Impacto Social del Internet</h1>
+
+            <h2>Desafíos y Problemas</h2>
+
+            <h3>🚨 Desinformación</h3>
+            <p>Uno de los mayores desafíos de Internet es la rápida propagación de noticias falsas. Las redes sociales permiten que cualquier información se difunda en cuestión de segundos, independientemente de que sea verdadera o falsa.</p>
+            <p><strong>Consecuencias:</strong></p>
+            <ul>
+                <li>Manipulación de la opinión pública</li>
+                <li>Confusión social</li>
+                <li>Polarización política</li>
+                <li>Desconfianza en instituciones</li>
+            </ul>
+
+            <h3>😔 Ciberacoso</h3>
+            <p>El ciberacoso ocurre cuando una persona es hostigada mediante medios digitales.</p>
+            <p><strong>Puede incluir:</strong></p>
+            <ul>
+                <li>Insultos</li>
+                <li>Amenazas</li>
+                <li>Difusión de rumores</li>
+                <li>Publicación de contenido humillante</li>
+            </ul>
+            <p>Los adolescentes son uno de los grupos más afectados debido al uso intensivo de redes sociales.</p>
+
+            <h3>🔗 Brecha Digital</h3>
+            <p>No todas las personas tienen las mismas oportunidades de acceso a Internet. La brecha digital se refiere a las diferencias entre quienes tienen acceso a tecnologías digitales y quienes no.</p>
+            <p><strong>Esta desigualdad afecta:</strong></p>
+            <ul>
+                <li>Educación</li>
+                <li>Empleo</li>
+                <li>Acceso a información</li>
+                <li>Participación ciudadana</li>
+            </ul>
+
+            <h3>🔐 Pérdida de Privacidad</h3>
+            <p>Muchas plataformas recopilan información sobre:</p>
+            <ul>
+                <li>Ubicación</li>
+                <li>Hábitos de navegación</li>
+                <li>Preferencias de compra</li>
+                <li>Interacciones sociales</li>
+            </ul>
+            <p>Estos datos pueden utilizarse para publicidad personalizada y análisis de comportamiento.</p>
+
+            <h3>🎮 Adicción Tecnológica</h3>
+            <p>El uso excesivo de Internet puede provocar:</p>
+            <ul>
+                <li>Dependencia psicológica</li>
+                <li>Problemas de sueño</li>
+                <li>Disminución del rendimiento académico</li>
+                <li>Aislamiento social</li>
+            </ul>
+            <p>Las plataformas utilizan algoritmos diseñados para mantener la atención del usuario durante largos periodos.</p>
+
+            <button class="button" onclick="showSection('beneficios')">Siguiente: Beneficios →</button>
+        </section>
+
+        <!-- SECCIÓN: BENEFICIOS -->
+        <section id="beneficios">
+            <h1>✅ 4. Beneficios Sociales del Internet</h1>
+
+            <h2>Impactos Positivos</h2>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>📚 Educación</h3>
+                    <p>Internet ha democratizado el acceso al conocimiento permitiendo:</p>
+                    <ul>
+                        <li>Cursos en línea</li>
+                        <li>Bibliotecas digitales</li>
+                        <li>Tutoriales</li>
+                        <li>Educación a distancia</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>🏥 Salud</h3>
+                    <p>Gracias a Internet existen:</p>
+                    <ul>
+                        <li>Consultas médicas virtuales</li>
+                        <li>Sistemas de monitoreo remoto</li>
+                        <li>Acceso rápido a información sanitaria</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>💼 Economía</h3>
+                    <p>Internet impulsó:</p>
+                    <ul>
+                        <li>Comercio electrónico</li>
+                        <li>Marketing digital</li>
+                        <li>Trabajo remoto</li>
+                        <li>Emprendimientos digitales</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>🌍 Comunicación Global</h3>
+                    <p>La comunicación instantánea permite conectar personas de distintos países mediante:</p>
+                    <ul>
+                        <li>Videollamadas</li>
+                        <li>Redes sociales</li>
+                        <li>Correo electrónico</li>
+                        <li>Mensajería instantánea</li>
+                    </ul>
+                </div>
+            </div>
+
+            <button class="button" onclick="showSection('transformacion')">Siguiente: Transformación →</button>
+        </section>
+
+        <!-- SECCIÓN: TRANSFORMACIÓN -->
+        <section id="transformacion">
+            <h1>🔄 5. Transformación de la Información</h1>
+
+            <h2>¿Cómo Maneja Internet la Información?</h2>
+            <p>Internet funciona mediante el envío de información en paquetes de datos que viajan a través de una red global de dispositivos interconectados.</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <strong>Paso 1: Digitalización</strong>
+                        <p>Toda la información se convierte en código binario (0 y 1). Las computadoras interpretan la información mediante estas combinaciones.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <strong>Paso 2: División en Paquetes</strong>
+                        <p>Los datos se dividen en pequeños bloques llamados paquetes. Cada paquete contiene: dirección de origen, dirección de destino y parte de la información.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <strong>Paso 3: Enrutamiento</strong>
+                        <p>Los routers determinan la mejor ruta para cada paquete. Esto permite que la información llegue incluso si algunas rutas presentan fallos.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <strong>Paso 4: Reconstrucción</strong>
+                        <p>Al llegar al destino, los paquetes se reorganizan para reconstruir el contenido original. Gracias a este proceso podemos visualizar videos, fotografías, páginas web y correos electrónicos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2>¿Cómo Transforma Internet la Información?</h2>
+            <p>Internet no solo transporta datos; también los transforma.</p>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>🤖 Algoritmos</h3>
+                    <p>Los algoritmos analizan historial de búsqueda, gustos personales e interacciones previas para personalizar el contenido mostrado a cada usuario.</p>
+                </div>
+
+                <div class="card">
+                    <h3>📦 Compresión de Datos</h3>
+                    <p>Los archivos se comprimen para reducir su tamaño y acelerar la transmisión. Esto ocurre constantemente con imágenes, música y videos.</p>
+                </div>
+
+                <div class="card">
+                    <h3>🧠 Inteligencia Artificial</h3>
+                    <p>La IA permite: traducción automática, reconocimiento de voz, recomendaciones personalizadas y detección de patrones.</p>
+                </div>
+
+                <div class="card">
+                    <h3>☁️ Computación en la Nube</h3>
+                    <p>Los datos se almacenan en servidores remotos accesibles desde cualquier lugar. Esto facilita respaldo, colaboración en tiempo real y acceso desde múltiples dispositivos.</p>
+                </div>
+            </div>
+
+            <button class="button" onclick="showSection('inicio')">Volver al Inicio ↑</button>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2024 Historia del Internet. Página educativa basada en investigaciones actuales.</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Mostrar la sección seleccionada
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+                // Scroll suave al inicio de la sección
+                selectedSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Hacer clicables los enlaces del navbar
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Página cargada exitosamente');
+        });
+    </script>
+</body>
+</html>
